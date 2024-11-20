@@ -1,0 +1,5 @@
+package com.biblioteca.back_endbiblioteca.repository;
+
+public class UsuarioRepository {
+
+}

@@ -1,0 +1,8 @@
+spring.application.name=back-endbiblioteca
+
+spring.datasource.url=jdbc:mysql://localhost:3306/gerenciamento_dados
+
+spring.datasource.username=root
+spring.datasource.password=
+
+spring.jpa.hibernate.ddl-auto=create

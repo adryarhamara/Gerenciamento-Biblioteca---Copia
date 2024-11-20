@@ -1,0 +1,40 @@
+package com.biblioteca.back_endbiblioteca.controller;
+
+import com.biblioteca.back_endbiblioteca.model.Usuario;
+import com.biblioteca.back_endbiblioteca.repository.UsuarioRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Optional;
+
+@RestController
+@RequestMapping("api/v1")
+public class UsuarioController {
+	@Autowired
+	private UsuarioRepository usuarioRepository;
+	
+	@GetMapping("/login")
+	public String Login() {
+		return "adrya";
+	}
+
+	
+	
+	public String autenticar(@RequestParam("usuario") String usuario, @RequestParam("senha") String senha, Model model) {
+		Optional<Usuario> user = usuarioRepository.findByUsuario(usuario);
+		if (user.isPresent() && user.get().getSenha().equals(senha)) {
+			model.addAttribute("usuario", user.get());
+			return "home"; //nome inicial da pagina(figma)
+		}
+		model.addAttribute("erro", "Usuário ou senha inválidos");
+		return "Login";
+	}
+	}
+
